@@ -27,11 +27,10 @@ class Day1 extends Day {
     }
 
     private calibrate(lines: string[], regex: RegExp): number {
-        let matches: RegExpMatchArray | null;
+        let matches: string[];
         return lines.reduce(
             (acc, val) => {
-                matches = val.match(regex);
-                console.log(matches);
+                matches = Array.from(val.matchAll(regex), x => x[1]); // extractcapture groups
                 if (matches) {
                     acc += this.matchToInt(matches[0]) * 10;
                     acc += this.matchToInt(matches[matches.length - 1]);
@@ -42,11 +41,11 @@ class Day1 extends Day {
     }
 
     solveForPartOne(input: string): string {
-        return String(this.calibrate(input.split("\n"), /\d/g));
+        return String(this.calibrate(input.split("\n"), /(\d)/g));
     }
 
     solveForPartTwo(input: string): string {
-        let regex = RegExp(Object.keys(this.NUMBERS).join('|') + "|\\d", 'g'); // names, digits, global match
+        let regex = RegExp(`(?=(${Object.keys(this.NUMBERS).join('|')}|\\d))`, 'g'); // names, digits, global match, positive lookahead for overlaps
         return String(this.calibrate(input.split("\n"), regex));
     }
 }
