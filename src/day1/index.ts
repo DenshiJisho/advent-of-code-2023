@@ -30,7 +30,7 @@ class Day1 extends Day {
         let matches: string[];
         return lines.reduce(
             (acc, val) => {
-                matches = Array.from(val.matchAll(regex), x => x[1]); // extractcapture groups
+                matches = Array.from(val.matchAll(regex), x => x[1]); // extract capture groups
                 if (matches) {
                     acc += this.matchToInt(matches[0]) * 10;
                     acc += this.matchToInt(matches[matches.length - 1]);
@@ -45,7 +45,7 @@ class Day1 extends Day {
     }
 
     solveForPartTwo(input: string): string {
-        let regex = RegExp(`(?=(${Object.keys(this.NUMBERS).join('|')}|\\d))`, 'g'); // names, digits, global match, positive lookahead for overlaps
+        const regex = RegExp(`(?=(${Object.keys(this.NUMBERS).join('|')}|\\d))`, 'g'); // names, digits, global match, positive lookahead for overlaps
         return String(this.calibrate(input.split("\n"), regex));
     }
 }
