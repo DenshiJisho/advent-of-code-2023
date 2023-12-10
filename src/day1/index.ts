@@ -1,7 +1,6 @@
-import { Day } from "../day";
+import { Day } from '../day'
 
 class Day1 extends Day {
-
     private NUMBERS: {[name:string]: number} = {
         "one": 1,
         "two": 2,
@@ -40,14 +39,14 @@ class Day1 extends Day {
         );
     }
 
-    solveForPartOne(input: string): string {
-        return String(this.calibrate(input.split("\n"), /(\d)/g));
+    solveForPartOne (input: string): string {
+        return String(this.calibrate(input.split('\n'), /(\d)/g));
     }
 
-    solveForPartTwo(input: string): string {
+    solveForPartTwo (input: string): string {
         const regex = RegExp(`(?=(${Object.keys(this.NUMBERS).join('|')}|\\d))`, 'g'); // names, digits, global match, positive lookahead for overlaps
-        return String(this.calibrate(input.split("\n"), regex));
+        return String(this.calibrate(input.split('\n'), regex));
     }
 }
 
-export default new Day1;
+export default new Day1();
