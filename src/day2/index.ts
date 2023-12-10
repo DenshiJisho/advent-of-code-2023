@@ -55,8 +55,25 @@ class Day2 extends Day {
     return String(total);
   }
 
+  private getMaxColors (draws: Draw[]): Draw {
+    return draws.reduce(
+      (acc, draw) => {
+        acc.red = draw.red > acc.red ? draw.red : acc.red;
+        acc.green = draw.green > acc.green ? draw.green : acc.green;
+        acc.blue = draw.blue > acc.blue ? draw.blue : acc.blue;
+        return acc;
+      }, { red: 0, green: 0, blue: 0 }
+    );
+  }
+
   solveForPartTwo (input: string): string {
-    return input;
+    let total: number = 0;
+    let lowest: Draw;
+    for (const game of input.split('\n')) {
+      lowest = this.getMaxColors(this.gameRounds(game));
+      total += lowest.red * lowest.green * lowest.blue;
+    }
+    return String(total);
   }
 }
 
