@@ -9,8 +9,8 @@
     "setup": "node src/setup.js",
     "start": "npm run build && node build/index.js"
   },
-  "author": "Loris Bognanni",
-  "license": "ISC",
+  "author": "Denshi Jisho",
+  "license": "MIT",
   "devDependencies": {
     "@types/jest": "^27.0.3",
     "@types/node": "^16.11.10",
