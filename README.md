@@ -9,3 +9,9 @@ Using [LBognanni's AoC template node framework](https://github.com/LBognanni/adv
     * Combine and add first and last digits in strings
   * Part 2 :heavy_check_mark:
     * Now includes names of digits ("one", "two") in addition to actual digits
+
+* Day 2 [[Problem]](https://adventofcode.com/2023/day/2) [[Solution Code]](/src/day2/index.ts)
+  * Part 1 :heavy_check_mark:
+    * Determine whether games consisted of valid draws from a bag of colored cubes
+  * Part 2 :heavy_check_mark:
+    * Determine fewest cubes of each color could have been used in each game
