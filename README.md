@@ -20,4 +20,10 @@ My personal attempts and solutions for 2023's [Advent of Code](https://adventofc
   * Part 2 :heavy_check_mark:
     * Sum product of pairs of numbers joined by symbols
 
+* Day 4 [[Problem]](https://adventofcode.com/2023/day/4) [[Solution Code]](/src/day4/index.ts)
+  * Part 1 :heavy_check_mark:
+    * Match card numbers to winning numbers to score exponentially based on number of matches
+  * Part 2 :heavy_check_mark:
+    * Matches generate copies of future cards, find number of cards
+
 Using [LBognanni's AoC template node framework](https://github.com/LBognanni/adventofcode-typescript-starter)
