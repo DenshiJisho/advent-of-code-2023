@@ -26,4 +26,10 @@ My personal attempts and solutions for 2023's [Advent of Code](https://adventofc
   * Part 2 :heavy_check_mark:
     * Matches generate copies of future cards, find number of cards
 
+* Day 5 [[Problem]](https://adventofcode.com/2023/day/5) [[Solution Code]](/src/day5/index.ts)
+  * Part 1 :heavy_check_mark:
+    * Follow mappings of numbers to find smallest final outcome
+  * Part 2 :heavy_check_mark:
+    * Now with ranges of inputs
+
 Using [LBognanni's AoC template node framework](https://github.com/LBognanni/adventofcode-typescript-starter)
