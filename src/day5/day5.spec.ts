@@ -1,6 +1,6 @@
 import day5 from './index';
 
-const example_input1 = `seeds: 79 14 55 13
+const example_input = `seeds: 79 14 55 13
 
 seed-to-soil map:
 50 98 2
@@ -38,6 +38,12 @@ humidity-to-location map:
 
 describe('On Day 5', () =>{
     it(`part1`, ()=>{
-        expect(day5.solveForPartOne(example_input1)).toBe('35');
+        expect(day5.solveForPartOne(example_input)).toBe('35');
+    })
+});
+
+describe('On Day 5', () =>{
+    it(`part2`, ()=>{
+        expect(day5.solveForPartTwo(example_input)).toBe('46');
     })
 });
