@@ -32,9 +32,10 @@ My personal attempts and solutions for 2023's [Advent of Code](https://adventofc
   * Part 2 :heavy_check_mark:
     * Now with ranges of inputs
 
-* Day 6 [[Problem]](https://adventofcode.com/2023/day/6) Solution Code
+* Day 6 [[Problem]](https://adventofcode.com/2023/day/6) [[Solution Code]](/src/day6/index.ts)
 
-  I simply used Wolfram Alpha as a calculator as the solutions can be found as intersections with quadratic equations
+  Initially, I simply used Wolfram Alpha as a calculator to complete this day, as the solutions can be found as intersections with quadratic equations, and the input is rather small.
+  I went back later in the day to implement these as programs.
   * Part 1 :heavy_check_mark:
     * Find number of charge times that send car at least a certain distance
   * Part 2 :heavy_check_mark:
