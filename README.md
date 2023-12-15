@@ -32,4 +32,12 @@ My personal attempts and solutions for 2023's [Advent of Code](https://adventofc
   * Part 2 :heavy_check_mark:
     * Now with ranges of inputs
 
+* Day 6 [[Problem]](https://adventofcode.com/2023/day/6) Solution Code
+
+  I simply used Wolfram Alpha as a calculator as the solutions can be found as intersections with quadratic equations
+  * Part 1 :heavy_check_mark:
+    * Find number of charge times that send car at least a certain distance
+  * Part 2 :heavy_check_mark:
+    * Inputs are now concated to make one larger input
+
 Using [LBognanni's AoC template node framework](https://github.com/LBognanni/adventofcode-typescript-starter)
