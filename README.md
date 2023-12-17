@@ -42,9 +42,6 @@ My personal attempts and solutions for 2023's [Advent of Code](https://adventofc
     * Inputs are now concated to make one larger input
 
 * Day 7 [[Problem]](https://adventofcode.com/2023/day/7) [[Solution Code]](/src/day7/index.ts)
-
-  Initially, I simply used Wolfram Alpha as a calculator to complete this day, as the solutions can be found as intersections with quadratic equations, and the input is rather small.
-  I went back later in the day to implement these as programs.
   * Part 1 :heavy_check_mark:
     * Rank poker hands and score based on bid * rank
   * Part 2
