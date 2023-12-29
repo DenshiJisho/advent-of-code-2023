@@ -44,7 +44,7 @@ My personal attempts and solutions for 2023's [Advent of Code](https://adventofc
 * Day 7 [[Problem]](https://adventofcode.com/2023/day/7) [[Solution Code]](/src/day7/index.ts)
   * Part 1 :heavy_check_mark:
     * Rank poker hands and score based on bid * rank
-  * Part 2
+  * Part 2 :heavy_check_mark:
     * Jacks are now wildcard jokers
 
 Using [LBognanni's AoC template node framework](https://github.com/LBognanni/adventofcode-typescript-starter)
