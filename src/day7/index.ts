@@ -21,7 +21,7 @@ class Day7 extends Day {
   constructor () {
     super(7);
     this.cardRanks = new Map([
-      ['1', 1],
+      ['*', 1],
       ['2', 2],
       ['3', 3],
       ['4', 4],
@@ -38,11 +38,31 @@ class Day7 extends Day {
     ]);
   }
 
+  private addWilds(cardGroups: Map<String, number>, wilds: number) {
+    let largestCardGroup: [String, number];
+    if (cardGroups.size === 0) {
+      cardGroups.set('*', 5);
+    } else {
+      largestCardGroup = [...cardGroups.entries()].reduce(
+        (max, entry) => entry[1] > max[1] ? entry : max
+      );
+      cardGroups.set(largestCardGroup[0], largestCardGroup[1] + wilds);
+    }
+  }
+
   private getHandRank (hand: Hand): number {
     const cardGroups: Map<string, number> = new Map();
+    let wilds: number = 0;
     // Group cards by rank
     for (const card of hand.cards) {
-      cardGroups.set(card, (cardGroups.get(card) ?? 0) + 1);
+      if (card === '*') {
+        wilds += 1;
+      } else {
+        cardGroups.set(card, (cardGroups.get(card) ?? 0) + 1);
+      }
+    }
+    if (wilds > 0) {
+      this.addWilds(cardGroups, wilds);
     }
     switch (cardGroups.size) {
       case 1: {
@@ -101,7 +121,18 @@ class Day7 extends Day {
   }
 
   solveForPartTwo (input: string): string {
-    return input;
+    const hands: Hand[] = input.split('\n').map(
+      (line) => ({ cards: line.split(' ')[0].replace(/J/g, '*'), bid: parseInt(line.split(' ')[1]) })
+    );
+    return String(
+      hands.map(
+        (hand) => ({ strength: this.calcHandStrength(hand), bid: hand.bid })
+      ).sort(
+        (a, b) => a.strength - b.strength
+      ).reduce(
+        (total, hand, index) => total + (hand.bid * (index + 1)), 0
+      )
+    );
   }
 }
 
