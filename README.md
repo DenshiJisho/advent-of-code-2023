@@ -47,4 +47,10 @@ My personal attempts and solutions for 2023's [Advent of Code](https://adventofc
   * Part 2 :heavy_check_mark:
     * Jacks are now wildcard jokers
 
+* Day 8 [[Problem]](https://adventofcode.com/2023/day/8) [[Solution Code]](/src/day8/index.ts)
+  * Part 1 :heavy_check_mark:
+    * Walk a graph using directions
+  * Part 2 :heavy_check_mark:
+    * Multiple walks along the graph that need to end simultaneously at endpoints
+
 Using [LBognanni's AoC template node framework](https://github.com/LBognanni/adventofcode-typescript-starter)
