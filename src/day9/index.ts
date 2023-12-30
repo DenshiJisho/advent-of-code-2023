@@ -31,7 +31,13 @@ class Day9 extends Day {
   }
 
   solveForPartTwo (input: string): string {
-    return input;
+    return String(
+      input.split('\n').map(
+        x => this.getNextNumber(x.trim().split(/\s/).map(x => parseInt(x)).reverse())
+      ).reduce(
+        (acc, val) => acc + val, 0
+      )
+    );
   }
 }
 
