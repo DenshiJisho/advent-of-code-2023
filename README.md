@@ -59,4 +59,13 @@ My personal attempts and solutions for 2023's [Advent of Code](https://adventofc
   * Part 2 :heavy_check_mark:
     * Find previous term in list of sequences
 
+* Day 10 [[Problem]](https://adventofcode.com/2023/day/10) [[Solution Code]](/src/day10/index.ts)
+
+  I like to write my solutions to handle all theoretical inputs and not make assumptions based on the specific input I'm given. However, to save some time, lines, and complexity,
+  I ignore the shape of the starting point in my boundary detection algorithm, which can only be made in half of the possible S values, but is the case in the puzzle input.
+  * Part 1 :heavy_check_mark:
+    * Find furthest point on path
+  * Part 2 :heavy_check_mark:
+    * Find space enclosed within path
+
 Using [LBognanni's AoC template node framework](https://github.com/LBognanni/adventofcode-typescript-starter)
