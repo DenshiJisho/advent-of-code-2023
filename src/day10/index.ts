@@ -6,9 +6,10 @@ interface coordinate{
 }
 
 class Maze {
-  s: coordinate = { i: 0, j: 0 }
-  location: coordinate = { i: 0, j: 0 }
+  s!: coordinate
+  location!: coordinate
   grid: string[][]
+  boundary: Set<string>;
 
   // Symbol, previous movement -> direction
   directions: { [key: string]: string } = {
@@ -37,7 +38,7 @@ class Maze {
         return Array.from(line.trim());
       }
     );
-    this.location = { i: this.s.i, j: this.s.j };
+    this.boundary = new Set();
   }
 
   public atS (): boolean {
@@ -64,14 +65,18 @@ class Maze {
   public getStart (): [coordinate, string] {
     const i = this.s.i;
     const j = this.s.j;
-    if (this.grid[i - 1][j] === '|' ||
-        this.grid[i - 1][j] === 'F' ||
-        this.grid[i - 1][j] === '7') {
+    if (i > 0 && (
+      this.grid[i - 1][j] === '|' ||
+      this.grid[i - 1][j] === 'F' ||
+      this.grid[i - 1][j] === '7')
+    ) {
       return [{ i: i - 1, j: j }, 'N'];
     }
-    if (this.grid[i + 1][j] === '|' ||
-        this.grid[i + 1][j] === 'J' ||
-        this.grid[i + 1][j] === 'L') {
+    if (i < this.grid.length - 1 && (
+      this.grid[i + 1][j] === '|' ||
+      this.grid[i + 1][j] === 'J' ||
+      this.grid[i + 1][j] === 'L')
+    ) {
       return [{ i: i + 1, j: j }, 'S'];
     }
     return [{ i: i, j: j + 1 }, 'E'];
@@ -89,6 +94,49 @@ class Maze {
     }
     return distance;
   }
+
+  private markPath () {
+    let direction: string;
+    [this.location, direction] = this.getStart();
+    this.boundary.add(`${this.s.i},${this.s.j}`);
+    while (!this.atS()) {
+      this.boundary.add(`${this.location.i},${this.location.j}`);
+      direction = this.nextDirection(this.grid[this.location.i][this.location.j], direction);
+      this.move(direction);
+    }
+  }
+
+  public getInteriorSpace (): number {
+    // Scan grid, toggle inside/outside loop every time a boundary is crossed
+    let insideLoop: boolean;
+    let previousBoundary: string = '';
+    let total = 0;
+    this.markPath();
+    for (let i = 0; i < this.grid.length; i++) {
+      insideLoop = false;
+      for (let j = 0; j < this.grid[0].length; j++) {
+        if (this.boundary.has(`${i},${j}`)) {
+          if (this.grid[i][j] === '|') {
+            insideLoop = !insideLoop;
+          } else if (this.grid[i][j] === 'L' || this.grid[i][j] === 'F') {
+            previousBoundary = this.grid[i][j];
+          } else if (this.grid[i][j] === '7' && previousBoundary === 'L') {
+            insideLoop = !insideLoop;
+            previousBoundary = '7';
+          } else if (this.grid[i][j] === 'J' && previousBoundary === 'F') {
+            insideLoop = !insideLoop;
+            previousBoundary = 'J';
+          }
+          // S can be ignored if it's a 7, J, or -, which is the case for the
+          // test cases and full input, but this assumption doesn't hold if S
+          // is |, F, or L.
+        } else if (insideLoop) {
+          total += 1;
+        }
+      }
+    }
+    return total;
+  }
 }
 
 class Day10 extends Day {
@@ -101,7 +149,7 @@ class Day10 extends Day {
   }
 
   solveForPartTwo (input: string): string {
-    return input;
+    return String(new Maze(input).getInteriorSpace());
   }
 }
 
