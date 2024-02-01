@@ -10,7 +10,7 @@ class Day11 extends Day {
     super(11);
   }
 
-  getGalaxies (input: string): coord[] {
+  getGalaxies (input: string, expansionFactor: number): coord[] {
     const galaxies: coord[] = [];
     let emptyRows: number = 0;
     const nonemptyCols: Set<number> = new Set();
@@ -21,7 +21,7 @@ class Day11 extends Day {
       for (let j = 0; j < line.length; j++) {
         if (line[j] === '#') {
           nonemptyCols.add(j);
-          galaxies.push({ x: i + emptyRows, y: j });
+          galaxies.push({ x: i + emptyRows * (expansionFactor - 1), y: j });
         }
       }
     }
@@ -31,7 +31,7 @@ class Day11 extends Day {
       }
       for (const coord of galaxies) {
         if (coord.y > col) {
-          coord.y++;
+          coord.y += expansionFactor - 1;
         }
       }
     }
@@ -43,7 +43,7 @@ class Day11 extends Day {
   }
 
   solveForPartOne (input: string): string {
-    const galaxies = this.getGalaxies(input);
+    const galaxies = this.getGalaxies(input, 2);
     let total = 0;
     for (let i = 0; i < galaxies.length; i++) {
       for (let j = i + 1; j < galaxies.length; j++) {
@@ -54,7 +54,14 @@ class Day11 extends Day {
   }
 
   solveForPartTwo (input: string): string {
-    return input;
+    const galaxies = this.getGalaxies(input, 1000000);
+    let total = 0;
+    for (let i = 0; i < galaxies.length; i++) {
+      for (let j = i + 1; j < galaxies.length; j++) {
+        total += this.getDistance(galaxies[i], galaxies[j]);
+      }
+    }
+    return String(total);
   }
 }
 
