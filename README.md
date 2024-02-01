@@ -68,4 +68,10 @@ My personal attempts and solutions for 2023's [Advent of Code](https://adventofc
   * Part 2 :heavy_check_mark:
     * Find space enclosed within path
 
+* Day 11 [[Problem]](https://adventofcode.com/2023/day/11) [[Solution Code]](/src/day11/index.ts)
+  * Part 1 :heavy_check_mark:
+    * Expand grid of points and sum all shortest distances
+  * Part 2 :heavy_check_mark:
+    * Larger expansion factor
+
 Using [LBognanni's AoC template node framework](https://github.com/LBognanni/adventofcode-typescript-starter)
